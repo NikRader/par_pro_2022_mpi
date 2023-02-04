@@ -4,11 +4,8 @@
 #include <gtest/gtest.h>
 #include <string>
 #include <algorithm>
+#include "pch.h"
 #include "../../../modules/task_1/kudryavtsev_n_number_of_letters_in_string/number_of_letters_in_string.h"
-#include "pch.h" 
-
-
-
 
 TEST(Parallel_Number_Of_Letters_In_String_MPI, Size_1) {
     int rank_pr;
@@ -93,3 +90,4 @@ int main(int argc, char* argv[]) {
     listeners.Append(new GTestMPIListener::MPIMinimalistPrinter);
     return RUN_ALL_TESTS();
 }
+

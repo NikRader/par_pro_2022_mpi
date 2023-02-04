@@ -11,7 +11,8 @@ constexpr char base_string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv
 
 
 int Sequental(std::string result) {
-    return  std::count_if(result.begin(), result.end(),[](char c) { return ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')); });
+    return  std::count_if(result.begin(), result.end(), [](char c) 
+        { return ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')); });
 }
 
 int Parallel(const std::string result, int elements_count) {
@@ -29,8 +30,7 @@ int Parallel(const std::string result, int elements_count) {
     string_part.resize(rank_pr == 0 ? deltaa + remainder : deltaa);
     if (rank_pr == 0) {
         string_part = { result.begin(), result.begin() + deltaa + remainder };
-    }
-    else {
+    } else {
         MPI_Status statuss;
         MPI_Recv(&string_part[0], deltaa, MPI_CHAR, 0, 0, MPI_COMM_WORLD, &statuss);
     }
