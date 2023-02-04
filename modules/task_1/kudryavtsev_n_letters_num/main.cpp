@@ -4,7 +4,7 @@
 #include <string>
 #include <algorithm>
 // #include "pch.h"
-#include "../../../modules/task_1/kudryavtsev_n_letters_num/kudryavtsev_n_letters_num.h"
+#include "../../../modules/task_1/kudryavtsev_n_letters_num/letters_num.h"
 #include <gtest-mpi-listener.hpp>
 
 TEST(Parallel_Number_Of_Letters_In_String_MPI, Size_1) {
