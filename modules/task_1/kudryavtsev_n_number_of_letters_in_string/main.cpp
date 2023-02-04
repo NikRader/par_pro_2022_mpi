@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <string>
 #include <algorithm>
-#include "pch.h"
+// #include "pch.h"
 #include "../../../modules/task_1/kudryavtsev_n_number_of_letters_in_string/number_of_letters_in_string.h"
 #include <gtest-mpi-listener.hpp>
 
