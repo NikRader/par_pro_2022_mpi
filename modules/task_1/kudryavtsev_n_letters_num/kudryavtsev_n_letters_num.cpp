@@ -4,7 +4,7 @@
 #include <random>
 #include <algorithm>
 #include <string>
-#include "../../../modules/task_1/kudryavtsev_n_number_of_letters_in_string/number_of_letters_in_string.h"
+#include "../../../modules/task_1/kudryavtsev_n_letters_num/kudryavtsev_n_letters_num.h"
 
 
 constexpr char base_string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!,.&^$#@*()-_+=";
