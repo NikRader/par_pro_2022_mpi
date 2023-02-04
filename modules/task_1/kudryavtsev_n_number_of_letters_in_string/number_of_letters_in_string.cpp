@@ -15,7 +15,7 @@ int Sequental(std::string result) {
         { return ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')); });
 }
 
-int Parallel(const std::string result, int elements_count) {
+int Parallel(const std::string& result, int elements_count) {
     int count_pr, rank_pr;
     MPI_Comm_size(MPI_COMM_WORLD, &count_pr);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank_pr);
