@@ -11,7 +11,7 @@ constexpr char base_string[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv
 
 
 int Sequental(std::string result) {
-    return  std::count_if(result.begin(), result.end(), [](char c) 
+    return  std::count_if(result.begin(), result.end(), [](char c)
         { return ((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')); });
 }
 
