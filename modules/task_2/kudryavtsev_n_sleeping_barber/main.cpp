@@ -1,8 +1,9 @@
 // Copyright 2022 Kudryavtsev Nikita
-#include <mpi.h>
-#include <gtest-mpi-listener.hpp>
 #include <gtest/gtest.h>
+#include <mpi.h>
 #include "../../../modules/task_2/kudryavtsev_n_sleeping_barber/sleeping_barber.h"
+#include <gtest-mpi-listener.hpp>
+
 
 
 TEST(Barber, TEST_ASSSERT1) {
