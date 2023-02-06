@@ -118,6 +118,7 @@ int* Parallel(const int* picture, int w, int h) {
       MPI_Gatherv(local_matr + i * tmp, tmp, MPI_INT,
           global_matr + i * (w - 2), Counts, Displs, MPI_INT, 0, MPI_COMM_WORLD);                  
     }
+
     return global_matr;
   } else {
     if (Rank == 0) {
@@ -127,6 +128,7 @@ int* Parallel(const int* picture, int w, int h) {
     }
   }
 }
+
 
 
 
