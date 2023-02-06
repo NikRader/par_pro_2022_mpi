@@ -60,7 +60,7 @@ int* Sequential(const int* picture, int w, int h) {
   const float* Kern = GetKern();
   for (int i = 1; i < h - 1; i++) {
     for (int j = 1; j < w - 1; j++) {
-      new_picture[j - 1 + (i - 1) * (w - 2)] = GetNewColor(picture, j, i, w, h, Kern);       
+      new_picture[j - 1 + (i - 1) * (w - 2)] = GetNewColor(picture, j, i, w, h, Kern);
     }
   }
   return new_picture;
