@@ -43,7 +43,7 @@ float* GetKern() {
   return Kern;
 }
 
-float GetNewColor (const int* picture, int X, int Y, int w, int h, const float* Kern) {
+float GetNewColor(const int* picture, int X, int Y, int w, int h, const float* Kern) {
   float result = 0;
   for (int i = -1; i <= 1; i++) {
     for (int j = -1; j <= 1; j++) {
@@ -60,7 +60,7 @@ int* Sequential(const int* picture, int w, int h) {
   const float* Kern = GetKern();
   for (int i = 1; i < h - 1; i++) {
     for (int j = 1; j < w - 1; j++) {
-      new_picture[j - 1 + (i - 1) * (w - 2)] = GetNewColor(picture, j, i, w, h, Kern);        
+      new_picture[j - 1 + (i - 1) * (w - 2)] = GetNewColor(picture, j, i, w, h, Kern);       
     }
   }
   return new_picture;
@@ -112,7 +112,7 @@ int* Parallel(const int* picture, int w, int h) {
 
     for (int i = 0; i < h - 2; i++) {
       MPI_Gatherv(local_matr + i * tmp, tmp, MPI_INT,
-          global_matr + i * (w - 2), Counts, Displs, MPI_INT, 0, MPI_COMM_WORLD);                  
+          global_matr + i * (w - 2), Counts, Displs, MPI_INT, 0, MPI_COMM_WORLD);
     }
 
     return global_matr;
