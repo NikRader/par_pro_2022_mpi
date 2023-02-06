@@ -6,27 +6,23 @@
 #include <iostream>
 #include <random>
 
-int* GetPictureRandom(int w, int h)
-{
+int* GetPictureRandom(int w, int h) {
   std::mt19937 generate(time(0));
   std::uniform_int_distribution<> UID(0, 255);
   int* picture = new int[w * h];
-  for (int i = 0; i < w * h; i++)
-  {
+  for (int i = 0; i < w * h; i++) {
     picture[i] = UID(generate);
   }
   return picture;
 }
 
-int Clamp_pict(int val, int max_val, int min_val)
-{
+int Clamp_pict(int val, int max_val, int min_val) {
   if (val > max_val) return max_val;
   if (val < min_val) return min_val;
   return val;
 }
 
-float* GetKern()
-{
+float* GetKern() {
   int Size = 3;
   int Len = 9;
 
@@ -36,22 +32,19 @@ float* GetKern()
   int radius_signed = static_cast<int>(1);
 
   for (int X = -radius_signed; X <= radius_signed; X++)
-    for (int Y = -radius_signed; Y <= radius_signed; Y++)
-    {
+    for (int Y = -radius_signed; Y <= radius_signed; Y++) {
       std::size_t ID_X = (X + 1) * Size + (Y + 1);
       Kern[ID_X] = std::exp(-(X * X + Y * Y) / (delta * delta));
       normal += Kern[ID_X];
     }
-  for (int i = 0; i < Len; i++)
-  {
+  for (int i = 0; i < Len; i++) {
     Kern[i] /= normal;
   }
 
   return Kern;
 }
 
-float GetNewColor (const int* picture, int X, int Y, int w, int h,const float* Kern)
-{
+float GetNewColor (const int* picture, int X, int Y, int w, int h,const float* Kern) {
   float result = 0;
   for (int i = -1; i <= 1; i++) {
     for (int j = -1; j <= 1; j++) {
@@ -77,8 +70,7 @@ int* Sequential(const int* picture, int w, int h) {
   return new_picture;
 }
 
-int* Parallel(const int* picture, int w, int h)
-{
+int* Parallel(const int* picture, int w, int h) {
   int Size, Rank;
   MPI_Comm_size(MPI_COMM_WORLD, &Size);
   MPI_Comm_rank(MPI_COMM_WORLD, &Rank);
@@ -89,10 +81,8 @@ int* Parallel(const int* picture, int w, int h)
   if (Delt) {
     int* Counts = new int[Size];
     int *Displs = new int[Size];
-    for (int i = 0; i < Size; i++)
-    {
-      if (i == 0)
-      {
+    for (int i = 0; i < Size; i++) {
+      if (i == 0) {
         Counts[i] = Delt + Remain + 2;
         Displs[i] = 0;
       } else {
@@ -118,15 +108,13 @@ int* Parallel(const int* picture, int w, int h)
 
     int* global_matr = nullptr;
 
-    for (int i = 0; i < Size; i++)
-    {
+    for (int i = 0; i < Size; i++) {
       Counts[i] -= 2;
     }
 
     if (Rank == 0) global_matr = new int[(w - 2) * (h - 2)];
 
-    for (int i = 0; i < h - 2; i++)
-    {
+    for (int i = 0; i < h - 2; i++) {
       MPI_Gatherv(local_matr + i * tmp, tmp, MPI_INT,
           global_matr + i * (w - 2), Counts, Displs, MPI_INT, 0, MPI_COMM_WORLD);                  
     }
@@ -139,5 +127,7 @@ int* Parallel(const int* picture, int w, int h)
     }
   }
 }
+
+
 
 
