@@ -3,7 +3,6 @@
 #include <gtest-mpi-listener.hpp>
 #include "../../../modules/task_3/kudryavtsev_n_gauss_vertical/gauss_vertical.h"
 
-
 TEST(Gauss_Vertical_MPI, Test_height_priority_1) {
   int Rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &Rank);
