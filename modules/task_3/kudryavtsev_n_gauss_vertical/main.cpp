@@ -61,7 +61,6 @@ TEST(Gauss_Vertical_MPI, Test_width_priority_1) {
 TEST(Gauss_Vertical_MPI, Test_equal) {
   int Rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &Rank);
-
   int* picture = nullptr;
   const int w = 500, h = 500;
 
@@ -115,7 +114,6 @@ TEST(Gauss_Vertical_MPI, Test_height_priority_2) {
 TEST(Gauss_Vertical_MPI, Test_width_priority_2) {
   int Rank;
   MPI_Comm_rank(MPI_COMM_WORLD, &Rank);
-
   int* picture = nullptr;
   const int w = 1230, h = 512;
 
