@@ -44,7 +44,7 @@ float* GetKern() {
   return Kern;
 }
 
-float GetNewColor (const int* picture, int X, int Y, int w, int h,const float* Kern) {
+float GetNewColor (const int* picture, int X, int Y, int w, int h, const float* Kern) {
   float result = 0;
   for (int i = -1; i <= 1; i++) {
     for (int j = -1; j <= 1; j++) {
@@ -60,10 +60,8 @@ float GetNewColor (const int* picture, int X, int Y, int w, int h,const float* K
 int* Sequential(const int* picture, int w, int h) {
   int* new_picture = new int[(w - 2) * (h - 2)];
   const float* Kern = GetKern();
-  for (int i = 1; i < h - 1; i++)
-  {
-    for (int j = 1; j < w - 1; j++)
-    {
+  for (int i = 1; i < h - 1; i++) {
+    for (int j = 1; j < w - 1; j++) {
       new_picture[j - 1 + (i - 1) * (w - 2)] = GetNewColor(picture, j, i, w, h, Kern);        
     }
   }
