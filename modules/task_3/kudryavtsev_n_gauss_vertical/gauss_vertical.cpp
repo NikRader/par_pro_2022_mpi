@@ -56,7 +56,6 @@ float GetNewColor (const int* picture, int X, int Y, int w, int h, const float* 
   return Clamp_pict(result, 255, 0);
 }
 
-
 int* Sequential(const int* picture, int w, int h) {
   int* new_picture = new int[(w - 2) * (h - 2)];
   const float* Kern = GetKern();
