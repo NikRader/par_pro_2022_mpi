@@ -40,7 +40,6 @@ float* GetKern() {
   for (int i = 0; i < Len; i++) {
     Kern[i] /= normal;
   }
-
   return Kern;
 }
 
